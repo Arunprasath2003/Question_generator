@@ -2,9 +2,6 @@
 
 Question Generator is an NLP system for generating reading comprehension-style questions from texts such as news articles or pages excerpts from books. The system is built using pretrained models from [HuggingFace Transformers](https://github.com/huggingface/transformers). There are two models: the question generator itself, and the QA evaluator which ranks and filters the question-answer pairs based on their acceptability.
 
-## Update 2021/11/29
-
-### Updated training scripts
 
 The training notebooks have been updated with training scripts. To run:
 
@@ -18,9 +15,6 @@ python question_generator/training/qa_eval_train.py
 
 Hyperparameters can be changed using commandline arguments. See the scripts for the list of available arguments.
 
-### Datasets uploaded to Huggingface Hub
-
-The datasets have been uploaded to the Huggingface Hub:
 
 - [question generator training and validation data](https://huggingface.co/datasets/iarfmoose/question_generator)
 - [qa evaluator training and validation data](https://huggingface.co/datasets/iarfmoose/qa_evaluator)
@@ -68,7 +62,6 @@ answer_token <extracted answer> context_token <context>
 
 The concatenated string is then encoded and fed into the question generator model. The model architecture is `t5-base`. The pretrained model was finetuned as a sequence-to-sequence model on a dataset made up several well-known QA datasets ([SQuAD](https://rajpurkar.github.io/SQuAD-explorer/), [RACE](http://www.cs.cmu.edu/~glai1/data/race/), [CoQA](https://stanfordnlp.github.io/coqa/), and [MSMARCO](https://microsoft.github.io/msmarco/)). The datasets were restructured by concatenating the answer and context fields into the previously mentioned format. The concatenated answer and context was then used as an input for training, and the question field became the targets.
 
-The datasets can be found [here](https://drive.google.com/drive/folders/1JtliZ5FyCmczc7e-iJXUoRplKVaWql8s?usp=sharing).
 
 ### QA Evaluator
 
