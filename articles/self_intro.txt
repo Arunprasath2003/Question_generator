@@ -1,0 +1,4 @@
+I am Arun Prasath studying 4th year in VIT Chennai. I am pursuing B.Tech CSE with specialization in AI and Robotics. In 4 years of my college life, I learnt programming languages namely C,C++,Java, Python.
+I attended internship training in Zoho corporation where they gave tasks regarding NLP and Pytorch. I did projects in group so I am a team player.
+I did College data management system using Python and sqlite3. I used tkinter package in Python for GUI interface. I learnt  MERN stack.
+I did Task Management application using MERN stack where the application can perform CRUD operations. I am punctual in college because I finish my assignments on time.
