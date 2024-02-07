@@ -1,19 +1,6 @@
 # Question_generator
 
-Question Generator is an NLP system for generating reading comprehension-style questions from texts such as news articles or pages excerpts from books. The system is built using pretrained models from [HuggingFace Transformers](https://github.com/huggingface/transformers). There are two models: the question generator itself, and the QA evaluator which ranks and filters the question-answer pairs based on their acceptability.
-
-
-The training notebooks have been updated with training scripts. To run:
-
-```bash
-python question_generator/training/qg_train.py
-```
-
-```bash
-python question_generator/training/qa_eval_train.py
-```
-
-Hyperparameters can be changed using commandline arguments. See the scripts for the list of available arguments.
+The goal of Question Generation is to generate a valid and fluent question according to a given passage and the target answer. Question Generation can be used in many scenarios, such as automatic tutoring systems, improving the performance of Question Answering models and enabling chatbots to lead a conversation. The system is built using pretrained models from [HuggingFace Transformers](https://github.com/huggingface/transformers). There are two models: the question generator itself, and the QA evaluator which ranks and filters the question-answer pairs based on their acceptability.
 
 
 - [question generator training and validation data](https://huggingface.co/datasets/iarfmoose/question_generator)
