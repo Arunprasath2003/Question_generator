@@ -21,11 +21,8 @@ Hyperparameters can be changed using commandline arguments. See the scripts for 
 
 ## Usage
 
-The easiest way to generate some questions is to clone the github repo and then run `qg_run.py` like this:
 
 ```
-git clone https://github.com/amontgomerie/question_generator
-cd question_generator
 pip install -r requirements.txt -qq
 python run_qg.py --text_file articles/twitter_hack.txt
 ```
