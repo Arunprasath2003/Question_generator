@@ -1,6 +1,6 @@
 import argparse
 from questiongenerator import QuestionGenerator
-from questiongenerator import print_qa
+from questiongenerator import store_qa
 
 
 def parse_args() -> argparse.Namespace:
@@ -21,13 +21,15 @@ def parse_args() -> argparse.Namespace:
 
 if __name__ == "__main__":
     args = parse_args()
-    with open(args.text_file, 'r') as file:
-        text_file = file.read()
+    with open(args.text_file, 'r',encoding='utf-8',errors='replace') as file:
+        text = file.read()
+
     qg = QuestionGenerator()
     qa_list = qg.generate(
-        text_file,
-        num_questions=int(args.num_questions),
+        text,
+        num_questions=10,
         answer_style=args.answer_style,
         use_evaluator=args.use_qa_eval
     )
-    print_qa(qa_list, show_answers=args.show_answers)
+    output_path='D:/8TH_SEM/question_generator/articles/output.txt'
+    store_qa(qa_list, output_path)
