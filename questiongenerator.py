@@ -1,15 +1,15 @@
-import en_core_web_sm
+import en_core_web_sm#pipeline trained on written web text that includes vocabulary,syntax,entities
 import json
 import numpy as np
 import random
-import re
+import re #regex
 import torch
 from transformers import (
     AutoTokenizer,
     AutoModelForSeq2SeqLM,
     AutoModelForSequenceClassification,
 )
-from typing import Any, List, Mapping, Tuple
+from typing import Any, List, Mapping, Tuple#Optional annotations which can be added to variables
 
 
 class QuestionGenerator:
@@ -427,3 +427,35 @@ def print_qa(qa_list: List[Mapping[str, str]], show_answers: bool = True) -> Non
         else:
             if show_answers:
                 print(f"{space}A: {answer}\n")
+
+def store_qa(qa_list: List[Mapping[str, str]], file_path: str, show_answers: bool = True) -> None:
+    """Formats and stores a list of generated questions and answers in a file."""
+    with open(file_path, 'w', encoding='utf-8',errors='replace') as file:
+        for i in range(len(qa_list)):
+            # wider space for 2 digit q nums
+            space = " " * (3 if i < 9 else 4)
+
+            file.write(f"{i + 1}) Q: {qa_list[i]['question']}\n")
+
+            answer = qa_list[i]["answer"]
+
+            # write a list of multiple choice answers
+            if type(answer) is list:
+                if show_answers:
+                    file.write(f"{space}A: 1. {answer[0]['answer']} " +
+                               f"{'(correct)' if answer[0]['correct'] else ''}\n")
+                    for j in range(1, len(answer)):
+                        file.write(
+                            f"{space + '   '}{j + 1}. {answer[j]['answer']} " +
+                            f"{'(correct)' if answer[j]['correct'] else ''}\n"
+                        )
+                else:
+                    file.write(f"{space}A: 1. {answer[0]['answer']}\n")
+                    for j in range(1, len(answer)):
+                        file.write(f"{space + '   '}{j + 1}. {answer[j]['answer']}\n")
+
+                file.write("\n")
+            # write full sentence answers
+            else:
+                if show_answers:
+                    file.write(f"{space}A: {answer}\n\n")
